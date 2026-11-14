@@ -38,8 +38,6 @@ from one_dragon.utils.plugin_module_loader import (
 if TYPE_CHECKING:
     from one_dragon.base.operation.one_dragon_context import OneDragonContext
 
-SCREEN_INFO_DIR: str = 'screen_info'
-"""插件画面目录默认名（相对 plugin_dir）；插件可在 const 中用同名常量覆盖，空串表示不附带画面。"""
 
 class ApplicationFactoryManager:
     """应用工厂管理器
@@ -525,7 +523,7 @@ class ApplicationFactoryManager:
             const_module, factory.app_id, 'KEY_SIM_DIR', '',
         )
         plugin_info.screen_info_dir = self._read_relative_dir(
-            const_module, factory.app_id, 'SCREEN_INFO_DIR', SCREEN_INFO_DIR,
+            const_module, factory.app_id, 'SCREEN_INFO_DIR', PluginInfo.screen_info_dir,
         )
 
         # 注册到插件信息表（同时作为后续重复检测的依据）
